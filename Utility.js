@@ -2,14 +2,17 @@ class Utility {
 
     EMP_RATE_PER_HOUR = 20
     NUM_OF_WORKING_DAYS = 21
+    MAX_HRS_IN_MONTH = 100;
     IS_FULL_TIME = 1;
     IS_PART_TIME = 2;
     EMP_HR = 0;
     DAY = 0;
     
-    empCheck
-    empWage
-    totalWage
+    empCheck = 0
+    empWage = 0
+    totalWage = 0
+    totalEmpHrs = 0 
+    totalWorkingDays = 0
 
     empAttendance() {
 
@@ -26,7 +29,8 @@ class Utility {
 
         this.empAttendance();
 
-        for (this.DAY = 0; this.DAY < this.NUM_OF_WORKING_DAYS; this.DAY++) {
+        while (this.totalEmpHrs <= this.MAX_HRS_IN_MONTH && this.totalWorkingDays < this.NUM_OF_WORKING_DAYS) {
+            this.totalWorkingDays++;
 
             switch(this.empCheck) {
                 
@@ -41,10 +45,10 @@ class Utility {
                 default: 
                     this.EMP_HR = 0
             }
-            this.empDailyWage();
-            this.totalWage = this.totalWage + this.empWage;
+            this.totalEmpHrs += this.EMP_HR;
         }
-        console.log(`\n * The Monthly Employee Wage Is : ${this.totalWage}`);
+        this.totalEmpWage = this.totalEmpHrs * this.EMP_RATE_PER_HOUR;
+        console.log("\n Employee's Total Days : "+this.totalWorkingDays+" ,Working Hr : "+this.totalEmpHrs+" ,Total Wage Is : "+this.totalEmpWage);  
     }
 }
 
