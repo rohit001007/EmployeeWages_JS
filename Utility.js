@@ -25,6 +25,24 @@ class Utility {
         return this.empWage;
     }
 
+    getWorkingHrs = () =>{
+
+        switch(this.empCheck) {
+                
+            case this.IS_PART_TIME:
+                    this.EMP_HR = 8
+                    break;
+            
+            case this.IS_FULL_TIME:
+                    this.EMP_HR = 4    
+                    break;
+                
+            default: 
+                this.EMP_HR = 0
+        }
+        return this.EMP_HR
+    }
+
     mainEmployeeWage = () => {
 
         this.empAttendance();
@@ -32,19 +50,7 @@ class Utility {
         while (this.totalEmpHrs <= this.MAX_HRS_IN_MONTH && this.totalWorkingDays < this.NUM_OF_WORKING_DAYS) {
             this.totalWorkingDays++;
 
-            switch(this.empCheck) {
-                
-                case this.IS_PART_TIME:
-                        this.EMP_HR = 8
-                        break;
-                
-                case this.IS_FULL_TIME:
-                        this.EMP_HR = 4    
-                        break;
-                    
-                default: 
-                    this.EMP_HR = 0
-            }
+            this.getWorkingHrs(this.empCheck);
             this.totalEmpHrs += this.EMP_HR;
         }
         this.totalEmpWage = this.totalEmpHrs * this.EMP_RATE_PER_HOUR;
