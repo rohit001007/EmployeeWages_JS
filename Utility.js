@@ -23,13 +23,19 @@ class Utility {
         
         this.empAttendance();
 
-            if (this.empCheck == this.IS_FULL_TIME)
-                this.EMP_HR = 8
-            else if (this.empCheck == this.IS_PART_TIME)
-                this.EMP_HR = 4
-            else
-                console.log("\n * Employee Is Absent..! ");
-        
+        switch(this.empCheck) {
+            
+            case this.IS_PART_TIME:
+                    this.EMP_HR = 8
+                    break;
+            
+            case this.IS_FULL_TIME:
+                    this.EMP_HR = 4    
+                    break;
+                
+            default: 
+	            console.log("\n * Employee Is Absent..!!");
+        }
         this.empDailyWage();
         console.log("\n * The Daily Eamployee Wage Is : "+this.empWage);
     }
