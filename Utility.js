@@ -45,9 +45,7 @@ class Utility {
 
     mainEmployeeWage = () => {
 
-        let empDailyWage = new Array();
-
-        
+        let empDailyWage = new Map();
 
         while (this.totalEmpHrs <= this.MAX_HRS_IN_MONTH && this.totalWorkingDays < this.NUM_OF_WORKING_DAYS) {
             this.totalWorkingDays++;
@@ -55,11 +53,11 @@ class Utility {
             this.empAttendance();
             this.EMP_HR = this.getWorkingHrs(this.empCheck);
             this.totalEmpHrs += this.EMP_HR;
-            empDailyWage.push(this.empDailyWage(this.EMP_HR))
+            empDailyWage.set("Day"+this.totalWorkingDays, this.empDailyWage(this.EMP_HR))
         }
         this.totalEmpWage = this.totalEmpHrs * this.EMP_RATE_PER_HOUR;
-        console.log("\n * The Daily Wage Of Employee Is : "+empDailyWage);
-        console.log("\n * The Monthly Wage Of Employee Is : "+this.totalEmpWage);
+        console.log(`\n * The Monthly Wage Of Employee Is : ${this.totalEmpWage} \n`);
+        console.log(empDailyWage);
     }
 }
 
