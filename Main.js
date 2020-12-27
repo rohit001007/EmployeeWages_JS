@@ -1,0 +1,1 @@
+console.log(`\n * Welcome To Employee Wages Problem In Java Script *`)
