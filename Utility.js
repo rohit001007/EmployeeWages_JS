@@ -1,7 +1,9 @@
 class Utility {
 
     EMP_RATE_PER_HOUR = 20
-    EMP_HR = 8
+    IS_FULL_TIME = 1;
+    IS_PART_TIME = 2;
+    EMP_HR = 0;
     
     empCheck
     empWage
@@ -20,15 +22,16 @@ class Utility {
     mainEmployeeWage = () => {
         
         this.empAttendance();
-        this.empDailyWage();
 
-            if (this.empCheck == 1) {
-                console.log("\n * Employee Is Present..! ");
-                console.log("\n * The Daily Eamployee Wage Is : "+this.empWage);
-            }
-            else{
+            if (this.empCheck == this.IS_FULL_TIME)
+                this.EMP_HR = 8
+            else if (this.empCheck == this.IS_PART_TIME)
+                this.EMP_HR = 4
+            else
                 console.log("\n * Employee Is Absent..! ");
-            }
+        
+        this.empDailyWage();
+        console.log("\n * The Daily Eamployee Wage Is : "+this.empWage);
     }
 }
 
