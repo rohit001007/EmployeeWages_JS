@@ -1,1 +1,3 @@
-console.log(`\n * Welcome To Employee Wages Problem In Java Script *`)
+const utility = require("./Utility");
+
+utility.mainEmployeeWage();
