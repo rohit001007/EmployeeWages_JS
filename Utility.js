@@ -45,16 +45,21 @@ class Utility {
 
     mainEmployeeWage = () => {
 
-        this.empAttendance();
+        let empDailyWage = new Array();
+
+        
 
         while (this.totalEmpHrs <= this.MAX_HRS_IN_MONTH && this.totalWorkingDays < this.NUM_OF_WORKING_DAYS) {
             this.totalWorkingDays++;
 
-            this.getWorkingHrs(this.empCheck);
+            this.empAttendance();
+            this.EMP_HR = this.getWorkingHrs(this.empCheck);
             this.totalEmpHrs += this.EMP_HR;
+            empDailyWage.push(this.empDailyWage(this.EMP_HR))
         }
         this.totalEmpWage = this.totalEmpHrs * this.EMP_RATE_PER_HOUR;
-        console.log("\n Employee's Total Days : "+this.totalWorkingDays+" ,Working Hr : "+this.totalEmpHrs+" ,Total Wage Is : "+this.totalEmpWage);  
+        console.log("\n * The Daily Wage Of Employee Is : "+empDailyWage);
+        console.log("\n * The Monthly Wage Of Employee Is : "+this.totalEmpWage);
     }
 }
 
